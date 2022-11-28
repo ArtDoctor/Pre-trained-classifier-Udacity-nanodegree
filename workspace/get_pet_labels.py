@@ -40,27 +40,20 @@ def get_pet_labels(image_dir):
       List. The list contains for following item:
          index 0 = pet image label (string)
     """
-    # Replace None with the results_dic dictionary that you created with this
-    # function
     
-    # Creates empty dictionary named results_dic
     results_dic = dict()
-
-    # Determines number of items in dictionary
-    items_in_dic = len(results_dic)
-    print("\nEmpty Dictionary results_dic - n items=", items_in_dic)
 
     filenames = listdir(image_dir)
     for idx in range(0, len(filenames), 1):
-        word_list_pet_image = filenames[idx].split("_")
+        if filenames[0] != '.':
+            word_list_pet_image = filenames[idx].split("_")
 
-        pet_name = ""
-        for word in word_list_pet_image:
-            if word.isalpha():
-                pet_name += word + " "
-        pet_name = pet_name.strip()
-        
-        results_dic[filenames[idx]] = [pet_name]
+            pet_name = ""
+            for word in word_list_pet_image:
+                if word.isalpha():
+                    pet_name += word + " "
+            pet_name = pet_name.strip()
 
-    
+            results_dic[filenames[idx]] = [pet_name]
+
     return results_dic

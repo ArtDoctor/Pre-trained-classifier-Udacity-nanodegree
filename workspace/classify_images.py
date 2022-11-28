@@ -69,9 +69,7 @@ def classify_images(images_dir, results_dic, model):
     
     for key in results_dic:
         classifier_res = classifier(images_dir + key, model)
-        if results_dic[key][0].lower() in classifier_res.lower():
+        if results_dic[key][0].lower() in classifier_res.lower().strip():
             results_dic[key].extend([classifier_res, 1])
         else:
             results_dic[key].extend([classifier_res, 0])
-            
-        
